@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="otoiawase.css" media="screen">
+  <title>お問い合わせ</title>
+</head>
+<body>
+  <form action="sample.php" method="post"></form>
+  <h1>お問い合わせ</h1>
+  <ul>
+    <li class="koumoku" id="naiyou">お問い合わせ内容</li>
+    <input type="text" list="otoiawasenaiyou">
+    <datalist id="otoiawasenaiyou">
+      <option value="学部について"></option>
+      <option value="校舎について"></option>
+      <option value="カリキュラムについて"></option>
+      <option value="入試について"></option>
+      <option value="見学希望"></option>
+      <option value="企業の方"></option>
+      <option value="その他"></option>
+    </datalist>
+    <li>
+      <dt class="koumoku">お名前</dt>    <span class="required">必須</span>
+    </li>
+    <dd>
+      姓
+      <input type="text" name="sei" value="" placeholder="例）佐藤" class="saimoku" required >
+      名
+      <input type="text" name="mei" value="" placeholder="例）大貴" class="saimoku" required >
+    </dd><br>
+    <li>
+      <dt class="koumoku">ふりがな</dt>    <span class="required">必須</span>
+    </li>
+    <dd>
+      せい
+      <input type="text" name="huri" value="" placeholder="例）さとう" class="saimoku"  required >
+      めい
+      <input type="text" name="gana" value="" placeholder="例）だいき" class="saimoku"  required>
+    </dd><br>
+    <li>
+    <dt class="koumoku">ご住所</dt>    <span class="required">必須</span>
+    </li>
+    <dd>
+      <p class="saimoku">郵便番号</p>
+      <input type="text" name="yuubin" value="" placeholder="例）111-XXXX" required><br>
+      <p class="saimoku">都道府県</p>
+      <input type="text" name="todouhuken" value="" placeholder="例）東京都" required><br>
+      <p class="saimoku">市区町村・番地</p>
+      <input type="text" name="shityouson" value="" placeholder="例）南区八本山３丁目" size="40" required><br>
+      <p class="saimoku">建物名・号室</p>
+      <input type="text" name="tatemonomei" value="" placeholder="例）1-3-5　インフォメ―ションタワー八本　5F" size="60" required><br>
+    </dd>
+    <li>
+      <p class="koumoku">電話番号</p><span class="required">必須</span>
+      <input type="tel" name="denwa" value="" placeholder="例）0480-55-XXXX" required>
+    </li>
+    <li>
+      <p class="koumoku">メールアドレス</p><span class="required">必須</span>
+      <input type="email" name="email" value="" placeholder="例）address.pointa@ccc.co.jp" size="60" required>
+    </li>
+    <li>
+      <p class="koumoku">その他　質問等</p><br>
+      <textarea name="sonota" id="sonota" cols="100" rows="20"></textarea></td>
+    </li>
+    <li>
+      <p class="koumoku">メルマガ</p><br>
+        大学の最新情報等についてメルマガで受け取りますか？<br>
+        <input type="radio" name="melmaga" value="1" >受け取る
+        <input type="radio" name="melmaga" value="2"  checked>受け取らない
+    </li>
+    <li>
+      <input type="checkbox" name="kojinjyouhou" id="1">
+        個人情報の取扱いに同意する
+    </li>
+    <li>
+      <input type="submit" value="送信">
+    </li>
+  </ul>
+    
+
+
+
+</body>
+</html>

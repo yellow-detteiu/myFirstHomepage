@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="otoiawase2.css">
+  <title>Document</title>
+</head>
+<body>
+
+<h1>お問い合わせ</h1>
+
+<form action="form.php" method="get">
+<div class="Form" >
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>氏名</p>
+    <input type="text" name="name" class="Form-Item-Input" placeholder="例）山田太郎" required>
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
+    <input type="text" name="tel" class="Form-Item-Input" placeholder="例）000-0000-0000" id="tel" required>
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
+    <input type="email" name="email" class="Form-Item-Input" placeholder="例）example@gmail.com"  id="email" required>
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>お問い合わせ内容<br><small>　　　　(10～1000文字)</small><br></p>
+    <textarea name="otoiawase" class="Form-Item-Textarea" id="message" onkeyup="exec()" required></textarea>
+  </div>
+  <div id="feedback"></div>
+  <input type="submit" class="Form-Btn" value="送信する" onclick="judge()">
+  <input type="hidden" name="mode" value="get">
+</div>
+</form>
+
+<svg>
+  <filter id="glow">
+    <feGaussianBlur stdDeviation="2"/>
+    <feComposite in2="SourceGraphic"
+                 operator="out" result="glow" />
+    <feFlood flood-color="white" flood-opacity="0.2" />
+    <feComposite in2="SourceGraphic"
+                 operator="atop" result="light" />
+    <feComposite in="glow" in2="light" />
+  </filter>
+  <pattern id="p" patternUnits="userSpaceOnUse"
+           width="180px" height="120px"
+           patternTransform="scale(1,0.8660254)">
+    <g filter="url(#glow)">
+      <g class="wrapper">
+        <path id="hex" pathLength="388.5"
+                 d="M-30,-60 30,-60 60,0
+                         30,60 -30,60 -60,0Z"
+                 transform="scale(0.935)" />
+      </g>
+      <use xlink:href="#hex" x="0" y="+120" />
+      <use xlink:href="#hex" x="+90" y="+60" />
+      <use xlink:href="#hex" x="+180" y="0" />
+      <use xlink:href="#hex" x="+180" y="120" />
+    </g>
+  </pattern>
+  <rect fill="url(#p)" width="100%" height="100%"/>
+</svg>
+
+<script>
+  const mail = document.getElementById('email').value;
+  const m = mail.match(/^[\w-\.]+@[\w-\.]+\.[a-z]{2,}$/);
+  if ( m !== null ) {
+    console.log( 'ok :' + mail );
+  } else {
+    console.log( 'x :' + mail );
+  }
+
+  function judge(){
+    const mail = document.getElementById('email').value;
+    const m = mail.match(/^[\w-\.]+@[\w-\.]+\.[a-z]{2,}$/);
+    if ( m !== null ) {
+      console.log( 'ok :' + mail );
+      document.getElementById('email').style.backgroundColor="lightgreen";
+    } else {
+      console.log( 'x :' + mail );
+      document.getElementById('email').style.backgroundColor="orangered";
+    }
+
+    const tel = document.getElementById('tel').value;
+    const t = tel.match(/\d{2,4}-{0,1}\d{4}-?\d{4}/);
+    if ( t !== null ) {
+      console.log( 'ok :' + tel );
+      document.getElementById('tel').style.backgroundColor="lightgreen";
+    } else {
+      console.log( 'x :' + tel );
+      document.getElementById('tel').style.backgroundColor="orangered";
+    }
+  }
+
+  function exec(){
+    const text = document.querySelector('#message').value;
+    const elFB = document.querySelector('#feedback');
+    let result = '';
+
+    if ( text.length === 0 ) {
+      // 文字が空
+      result = '&#x26a0; 入力が空です。';
+    } else if ( text.length < 10 ) {
+      // 入力が短すぎる(10文字未満)
+      result = '&#x274e; 10文字以上入力してください。';
+    } else if ( text.length > 1000 ) {
+      // 入力が長すぎる(1000文字を超えている)
+      result = '&#x1f6ab; 1000文字以下にしてください。';
+    } else {
+      // 入力文字数は問題ない
+      result = '&#x2705; 適切な文字数です。'
+    }
+
+    elFB.innerHTML = `${text.length}文字 ${result}`;
+  }
+</script>
+
+</body>
+</html>

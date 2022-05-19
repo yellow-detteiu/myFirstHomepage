@@ -1,0 +1,48 @@
+@charset "utf-8";
+@media screen and (min-width: 768px){
+  p{
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 767px){
+  p{
+    font-size: 12px;
+  }
+} 
+
+*{
+  margin: 0;
+  padding: 0;
+
+}
+li{
+  list-style: none;
+}
+img{
+  /* display: block; */
+  vertical-align: bottom;
+}
+
+body{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+h1{
+  width: 500px;
+  height: 100px;
+  font-size: 300%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+.koumoku{
+  font-weight: bold;
+  font-size: 120%;
+  display: inline;
+}
+.required{
+  color: red;
+}
